@@ -1,6 +1,5 @@
 import React, { Component} from 'react';
 import './App.css';
-import NavBar from './NavBar.js';
 
 class App extends Component {
 
@@ -10,7 +9,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar />
+        <p>Don't have a key? Get one <a href="getapikey">Here</a></p>
+
       </div>
     );
   }

@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import App from './App.js';
+import GetAPIKey from './GetAPIKey.js';
+import EditData from './EditData.js';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router>
+    <nav>
+        <Link to="/">Home</Link>
+        <Link to="/getapikey">Get a key</Link>
+    </nav>
+    
+      <Route exact path="/" component={App}/>
+      <Route path="/getapikey" component={GetAPIKey}/>
+      <Route path="/edit" component={EditData}/>
+  </Router>,
   document.getElementById('root')
 );
 
