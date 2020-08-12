@@ -6,7 +6,10 @@ import Main from './Main.js';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <Main />,
+  <>
+  <Main />
+  <footer>Ryan Unroe</footer>
+  </>,
   document.getElementById('root')
 );
 

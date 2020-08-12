@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import App from './App.js';
 import GetAPIKey from './GetAPIKey.js';
 import EditData from './EditData.js';
@@ -11,7 +11,8 @@ class Main extends Component {
         this.changeAPIKey = this.changeAPIKey.bind(this);
 
         this.state = {
-            apiKey: ''
+            apiKey: '',
+            displayError: false
         };
     }
 
@@ -19,6 +20,11 @@ class Main extends Component {
         this.setState({
             apiKey: value
         });
+    }
+    showError = (bool) => {
+        this.setState({
+            displayError: bool
+        })
     }
 
 
@@ -31,17 +37,15 @@ class Main extends Component {
                     <Link to="/getapikey">Get a key</Link>
                 </nav>
                 
-                {/* <Route exact path="/" component={App}/>
-                <Route exact path="/getapikey" component={GetAPIKey}/>
-                <Route exact path="/edit" component={EditData}/> */}
 
                 <Route exact path="/" render={props => 
-                (<App action={this.changeAPIKey}/>)}/>
+                (<App action={this.changeAPIKey} displayError={this.state.displayError}/>)}/>
                 <Route exact path="/getapikey" render={props => 
                 (<GetAPIKey action={this.changeAPIKey}/>)}/>
                 <Route exact path="/edit" render={props => 
-                (<EditData apiKey={this.state.apiKey}/>)}/>
+                (<EditData apiKey={this.state.apiKey} action={this.showError}/>)}/>
             </Router>
+            
         );
     }
 
